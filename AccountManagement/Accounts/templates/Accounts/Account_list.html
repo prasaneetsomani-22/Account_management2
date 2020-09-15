@@ -1,0 +1,30 @@
+{% extends 'Accounts/base.html' %}
+
+{% block content %}
+	
+		<table class="table table-striped">
+      <thead>
+        <tr>
+         
+          <th scope="col">USER</th>
+          <th scope="col">ACCOUNT NUMBER</th>
+          <th scope="col">ACCOUNT HOLDER NAME</th>
+          <th scope="col">FOR MORE DETAILS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in object_list %}
+            <tr>
+               <td>{{i.user}}</td>
+              <td>{{i.Account_number}}</td>
+              <td>{{i.Account_holder_name}}</td>
+              <td><a href="{% url 'Account_details' pk=i.pk%}">CLICK HERE</a></td>
+            
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+	
+
+{% endblock%}

@@ -1,0 +1,35 @@
+{% extends 'Accounts/base.html' %}
+
+{% block content %}
+	<div>
+		<h2>USER: {{details.user}}</h2>
+		<h2>ACCOUNT NO.: {{details.Account_number}}</h2>
+		<h2>ACCOUNT NAME: {{details.Account_holder_name}}</h2>
+	</div>
+	<a href="{% url 'Add_transaction' id1=details.pk %}"><button type="button" class="btn btn-dark">ADD TRANSACTION</button></a>
+	<table class="table table-striped">
+		<thead>
+	        <tr>
+	         
+	          <th scope="col">FROM ACCOUNT</th>
+	          <th scope="col">DESCRIPTION</th>
+	          <th scope="col">TRANSACTION TYPE</th>
+	          <th scope="col">AMOUNT</th>
+	          <th scope="col">EDIT</th>
+	          <th scope="col">DELETE</th>
+	        </tr>
+      	</thead>
+      	<tbody>
+		    {% for k in transactions %}
+		            <tr>
+		              <td>{{k.from_account}}</td>
+		              <td>{{k.description}}</td>
+		              <td>{{k.transaction_type}}</td>
+		              <td>{{k.amount}}</td>
+		              <td><a href="{% url 'EditDetails' pk=k.pk %}">EDIT</a></td>
+		              <td><a href="{% url 'DeleteDetails' pk=k.pk %}">DELETE</a></td>
+		            </tr>
+		    {% endfor %}    
+      	</tbody>
+	</table>
+{% endblock %}
